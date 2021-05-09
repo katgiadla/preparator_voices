@@ -2,4 +2,4 @@
 
 This program help prepare speech signals to analyse and classification.
 
-**Stack:** Java
+**Stack:** Python (library: pydub)
