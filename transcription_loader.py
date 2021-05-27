@@ -1,8 +1,6 @@
-import re
 from itertools import chain
 from docx import Document
 from exceptions import EmptyListError
-
 
 def open_docx_transcription(path: str) -> list:
     """
@@ -94,10 +92,3 @@ def cleaning_transcription_list(transcription_words: list) -> list:
             transcription_words[counter] = str(word).strip('\n\t\.\,')
 
     return transcription_words
-
-def check_type_of_description(path: str):
-    scenario = 0
-    #if under try block
-    return scenario
-
-#TODO cleaning transcription list

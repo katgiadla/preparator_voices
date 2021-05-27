@@ -1,8 +1,7 @@
 import unittest
-from exceptions import EmptyListError
 from transcription_loader import *
 
-class MyTestCase(unittest.TestCase):
+class TestTranscritpionLoader(unittest.TestCase):
     def setUp(self) -> None:
         self.test_path_to_docx = 'D:\\preparator_voices\\test_files\\test.docx'
         self.test_failed_path_to_docx = 'D:\\preparator_voices\\test_files\\test1.docx'
