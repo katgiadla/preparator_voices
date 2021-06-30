@@ -1,6 +1,8 @@
 from itertools import chain
 from docx import Document
 from exceptions import EmptyListError
+from json import dumps
+from os.path import join, exists
 
 def open_docx_transcription(path: str) -> list:
     """
@@ -92,3 +94,37 @@ def cleaning_transcription_list(transcription_words: list) -> list:
             transcription_words[counter] = str(word).strip('\n\t\.\,')
 
     return transcription_words
+
+def save_list_of_words_to_file(name_transcription_of_sound: str, list_of_words: None, path_to_save: str) -> None:
+    """
+    Save transcripted list of words in JSON file.
+    If list doesn't exist or list is empty, function throws exception.
+    If file doesn't exist, function create a new.
+    If directory doesn't exist, function throws exception
+
+    Args:
+        name_transcription_of_sound (str):  name of file, which be originally transcripted
+        list_of_words (list):               list of transcripted words
+        path_to_save (str):                 directory, where file should be saved
+
+    Returns:
+        None
+    """
+    if list_of_words == None or len(list_of_words) == 0:
+        raise EmptyListError.EmptyListError("List of transcription doesn't exist or is empty")
+    else:
+        pass
+
+    if exists(path_to_save) == False:
+        raise NotADirectoryError("This director doesn't exist!")
+    else:
+        pass
+
+    data_to_save = {'file_name': name_transcription_of_sound,
+                    'transcription': list_of_words}
+    path = join(path_to_save, name_transcription_of_sound + '.json')
+
+    JSON_string = dumps(data_to_save)
+    JSON_file = open(path, "w")
+    JSON_file.write(JSON_string)
+    JSON_file.close()
