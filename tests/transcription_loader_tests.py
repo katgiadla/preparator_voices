@@ -1,5 +1,5 @@
 import unittest
-from transcription_loader import *
+from text_preparotion.transcription_loader import *
 
 class TestTranscritpionLoader(unittest.TestCase):
     def setUp(self) -> None:
