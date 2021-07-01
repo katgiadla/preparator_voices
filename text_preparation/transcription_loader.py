@@ -95,16 +95,17 @@ def cleaning_transcription_list(transcription_words: list) -> list:
 
     return transcription_words
 
-def save_list_of_words_to_file(name_transcription_of_sound: str, list_of_words: None, path_to_save: str) -> None:
+def save_list_of_words_to_file(path_of_transcribed_sound: str, list_of_words: None, path_to_save: str) -> None:
     """
-    Save transcripted list of words in JSON file.
+    Save transcribed list of words in JSON file.
     If list doesn't exist or list is empty, function throws exception.
     If file doesn't exist, function create a new.
-    If directory doesn't exist, function throws exception
+    If directory doesn't exist, function throws exception.
+    If directory doesn't exist, function throws exception.
 
     Args:
-        name_transcription_of_sound (str):  name of file, which be originally transcripted
-        list_of_words (list):               list of transcripted words
+        path_of_transcribed_sound (str):    path to file, which be transcribed
+        list_of_words (list):               list of transcribed words
         path_to_save (str):                 directory, where file should be saved
 
     Returns:
@@ -120,9 +121,14 @@ def save_list_of_words_to_file(name_transcription_of_sound: str, list_of_words: 
     else:
         pass
 
-    data_to_save = {'file_name': name_transcription_of_sound,
+    if exists(path_of_transcribed_sound) == False:
+        raise FileNotFoundError("This file doesn't exist!")
+    else:
+        pass
+
+    data_to_save = {'file_name': path_of_transcribed_sound,
                     'transcription': list_of_words}
-    path = join(path_to_save, name_transcription_of_sound + '.json')
+    path = join(path_to_save, path_of_transcribed_sound + '.json')
 
     JSON_string = dumps(data_to_save)
     JSON_file = open(path, "w")
