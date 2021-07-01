@@ -1,8 +1,9 @@
 import json
 import unittest
-from text_preparation.transcription_loader import *
-import exceptions.EmptyListError
 from os.path import isfile
+
+from text_preparation.transcription_loader import *
+
 
 class TestTranscritpionLoader(unittest.TestCase):
     def setUp(self) -> None:
